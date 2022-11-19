@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FaTrash } from 'react-icons/fa';
 import styles from '../TodoItem.module.css';
 
-const TodoItemAsFunction = (props) => {
+const TodoItem = (props) => {
   const [editing, setEditing] = useState(false);
   const input = useRef(null);
 
@@ -68,7 +68,7 @@ const TodoItemAsFunction = (props) => {
   );
 };
 
-TodoItemAsFunction.propTypes = {
+TodoItem.propTypes = {
   todo: PropTypes.shape({
     id: PropTypes.string,
     completed: PropTypes.bool,
@@ -79,4 +79,4 @@ TodoItemAsFunction.propTypes = {
   setUpdate: PropTypes.func.isRequired,
 };
 
-export default TodoItemAsFunction;
+export default TodoItem;
