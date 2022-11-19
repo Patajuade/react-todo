@@ -41,6 +41,7 @@ const Navbar = () => {
               className={(navData) => (navData.isActive ? 'active-link' : 'none')}
               onClick={() => closeMenu()}
               exact="true"
+              end
             >
               {link.text}
             </NavLink>
