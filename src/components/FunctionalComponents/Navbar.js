@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import '../../App.css';
 import { MdClose } from 'react-icons/md';
-import { FiMenu } from 'react-icons/fi';
+import { FaBars } from 'react-icons/fa';
 
 const links = [
   {
@@ -30,7 +30,7 @@ const Navbar = () => {
         {navbarOpen ? (
           <MdClose style={{ color: '#fff', width: '40px', height: '40px' }} />
         ) : (
-          <FiMenu style={{ color: '#7b7b7b', width: '40px', height: '40px' }} />
+          <FaBars style={{ color: '#7b7b7b', width: '30px', height: '30px' }} />
         )}
       </button>
       <ul className={`menuNav ${navbarOpen ? 'showMenu' : ''}`}>

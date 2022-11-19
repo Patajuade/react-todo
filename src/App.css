@@ -68,11 +68,11 @@ body {
   color: white;
 }
 
-.navBar {
+.NavBar {
   position: relative;
 }
 
-.navBar button {
+.NavBar button {
   position: fixed;
   left: 40px;
   top: 40px;
