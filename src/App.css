@@ -65,8 +65,7 @@ body {
 }
 
 .active-link {
-  color: orangered;
-  text-decoration: underline;
+  color: white;
 }
 
 .navBar {
@@ -84,6 +83,7 @@ body {
 }
 
 .menuNav {
+  overflow: hidden;
   overflow-y: scroll;
   list-style: none;
   position: fixed;
@@ -93,9 +93,9 @@ body {
   bottom: 0;
   height: 100vh;
   width: 0;
-  overflow: hidden;
   max-width: 290px;
   z-index: 9;
+  transition: width 0.5s ease;
 }
 
 .menuNav.showMenu {
