@@ -27,3 +27,14 @@
   padding: 10px;
   border: 1px solid #dfdfdf;
 }
+
+.dateShow {
+  display: block;
+  font-size: 10px;
+  color: #999;
+  margin: 5px 0 5px 30px;
+}
+
+.dateHidden {
+  display: none;
+}

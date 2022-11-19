@@ -7,6 +7,7 @@ import TodoList from './TodoList';
 import About from '../../pages/About';
 import NotMatch from '../../pages/NotMatch';
 import Navbar from './Navbar';
+import ToggleFinishedVisibility from './ToggleCompletedVisibility';
 
 const TodoContainer = () => {
   function getInitialTodos() {
@@ -15,6 +16,7 @@ const TodoContainer = () => {
     return savedTodos || [];
   }
   const [todos, setTodos] = useState(getInitialTodos());
+  const [showCompletedTodos, setShowCompletedTodos] = useState(true);
 
   const handleChange = (id) => {
     setTodos((prevState) => prevState.map((todo) => {
@@ -22,6 +24,7 @@ const TodoContainer = () => {
         return {
           ...todo,
           completed: !todo.completed,
+          date: Date(),
         };
       }
       return todo;
@@ -57,6 +60,12 @@ const TodoContainer = () => {
     const temp = JSON.stringify(todos);
     localStorage.setItem('todos', temp);
   }, [todos]);
+
+  const handleVisibilityChange = (isVisible) => {
+    setShowCompletedTodos(isVisible);
+  };
+  const nonCompletedTodos = (todos) => todos.filter((todo) => !todo.completed);
+
   return (
     <>
       <Navbar />
@@ -69,8 +78,9 @@ const TodoContainer = () => {
               <div className="inner">
                 <Header />
                 <InputTodo addTodoProps={addTodoItem} />
+                <ToggleFinishedVisibility changeVisibility={handleVisibilityChange} />
                 <TodoList
-                  todos={todos}
+                  todos={showCompletedTodos ? todos : nonCompletedTodos(todos)}
                   handleChangeProps={handleChange}
                   deleteTodoProps={delTodo}
                   setUpdate={setUpdate}

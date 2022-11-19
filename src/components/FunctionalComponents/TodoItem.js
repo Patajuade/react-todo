@@ -8,7 +8,9 @@ const TodoItem = (props) => {
   const input = useRef(null);
 
   const { todo } = props;
-  const { completed, id, title } = todo;
+  const {
+    completed, id, title, date,
+  } = todo;
   const { handleChangeProps, deleteTodoProps, setUpdate } = props;
 
   const stopEditing = () => setEditing(false);
@@ -51,6 +53,7 @@ const TodoItem = (props) => {
           <FaTrash style={{ color: 'orangered', fontSize: '16px' }} />
         </button>
         <span style={completed ? completedStyle : null}>{title}</span>
+        <span className={completed ? styles.dateShow : styles.dateHidden}>{date}</span>
       </div>
       <input
         type="text"
@@ -73,6 +76,7 @@ TodoItem.propTypes = {
     id: PropTypes.string,
     completed: PropTypes.bool,
     title: PropTypes.string,
+    date: PropTypes.string,
   }).isRequired,
   handleChangeProps: PropTypes.func.isRequired,
   deleteTodoProps: PropTypes.func.isRequired,
