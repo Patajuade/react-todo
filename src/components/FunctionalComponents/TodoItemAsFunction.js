@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaTrash } from 'react-icons/fa';
-import styles from './TodoItem.module.css';
+import styles from '../TodoItem.module.css';
 
-const TodoItem = (props) => {
+const TodoItemAsFunction = (props) => {
   const [editing, setEditing] = useState(false);
+  const input = useRef(null);
 
   const { todo } = props;
   const { completed, id, title } = todo;
   const { handleChangeProps, deleteTodoProps, setUpdate } = props;
 
-  const handleEditing = () => {
-    setEditing(true);
+  const stopEditing = () => setEditing(false);
+
+  const handleEditing = async () => {
+    await setEditing(true);
+    input.current.focus();
   };
   const handleUpdatedDone = (event) => {
     if (event.key === 'Enter') {
@@ -50,6 +54,7 @@ const TodoItem = (props) => {
       </div>
       <input
         type="text"
+        ref={input}
         style={editMode}
         className={styles.textInput}
         value={title}
@@ -57,19 +62,21 @@ const TodoItem = (props) => {
           setUpdate(e.target.value, id);
         }}
         onKeyDown={handleUpdatedDone}
+        onBlur={stopEditing}
       />
     </li>
   );
 };
 
-TodoItem.propTypes = {
-  todo: PropTypes.isRequired,
-};
-
-TodoItem.propTypes = {
+TodoItemAsFunction.propTypes = {
+  todo: PropTypes.shape({
+    id: PropTypes.string,
+    completed: PropTypes.bool,
+    title: PropTypes.string,
+  }).isRequired,
   handleChangeProps: PropTypes.func.isRequired,
   deleteTodoProps: PropTypes.func.isRequired,
   setUpdate: PropTypes.func.isRequired,
 };
 
-export default TodoItem;
+export default TodoItemAsFunction;

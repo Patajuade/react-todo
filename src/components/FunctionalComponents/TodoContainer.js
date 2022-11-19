@@ -4,8 +4,8 @@ import { Route, Routes } from 'react-router-dom';
 import Header from './Header';
 import InputTodo from './InputTodo';
 import TodoList from './TodoList';
-import About from '../pages/About';
-import NotMatch from '../pages/NotMatch';
+import About from '../../pages/About';
+import NotMatch from '../../pages/NotMatch';
 import Navbar from './Navbar';
 
 const TodoContainer = () => {
