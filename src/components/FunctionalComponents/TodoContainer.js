@@ -7,6 +7,7 @@ import TodoList from './TodoList';
 import About from '../../pages/About';
 import NotMatch from '../../pages/NotMatch';
 import Navbar from './Navbar';
+import styles from '../TodoItem.module.css';
 
 const TodoContainer = () => {
   function getInitialTodos() {
@@ -15,7 +16,7 @@ const TodoContainer = () => {
     return savedTodos || [];
   }
   const [todos, setTodos] = useState(getInitialTodos());
-
+  const [isHideCheckboxChecked, setIsHideCheckboxChecked] = useState(false);
   const handleChange = (id) => {
     setTodos((prevState) => prevState.map((todo) => {
       if (todo.id === id) {
@@ -69,8 +70,19 @@ const TodoContainer = () => {
               <div className="inner">
                 <Header />
                 <InputTodo addTodoProps={addTodoItem} />
+                <div>
+                  <input
+                    type="checkbox"
+                    className={styles.checkbox}
+                    checked={isHideCheckboxChecked}
+                    onChange={
+                    () => setIsHideCheckboxChecked((value) => !value)
+                  } // on peut aussi écrire !isHideCheckboxChecked
+                  />
+                  <span>Hide checked items</span>
+                </div>
                 <TodoList
-                  todos={todos}
+                  todos={isHideCheckboxChecked ? todos.filter((todo) => !todo.completed) : todos}
                   handleChangeProps={handleChange}
                   deleteTodoProps={delTodo}
                   setUpdate={setUpdate}

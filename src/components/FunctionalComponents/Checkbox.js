@@ -10,7 +10,7 @@ function CheckBox(props) {
     </h2>
   );
 }
-²
+
 export default Checkbox;
 
 // pas besoin de mettre ça c'est déjà dans index.js
