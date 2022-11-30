@@ -65,7 +65,7 @@ body {
 }
 
 .active-link {
-  color: orangered;
+  color: black;
   text-decoration: underline;
 }
 
@@ -88,14 +88,15 @@ body {
   list-style: none;
   position: fixed;
   top: 0;
-  background: darkcyan;
+  background: #c2c2c2;
   left: 0;
   bottom: 0;
   height: 100vh;
   width: 0;
   overflow: hidden;
-  max-width: 290px;
+  max-width: 200px;
   z-index: 9;
+  transition: width ease 2s;
 }
 
 .menuNav.showMenu {
@@ -105,12 +106,33 @@ body {
 a {
   display: block;
   padding: 10px 40px;
-  text-decoration: none;
-  color: #3fffd2;
+  color: black;
   text-transform: uppercase;
   font-weight: bold;
 }
 
 .menuNav li:first-child {
   margin-top: 7rem;
+}
+
+.aboutContainer {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  padding-top: 4rem;
+}
+
+.aboutImage {
+  padding-top: 1rem;
+}
+
+.aboutName,
+.aboutImage,
+.aboutYear {
+  margin: auto;
+}
+
+.aboutYear {
+  color: #c2c2c2;
 }
