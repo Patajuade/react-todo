@@ -136,3 +136,7 @@ a {
 .aboutYear {
   color: #c2c2c2;
 }
+
+.TodoItemDate {
+  font-size: 10px;
+}

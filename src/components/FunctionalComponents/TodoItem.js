@@ -38,6 +38,7 @@ const TodoItem = (props) => {
     editMode.display = 'none';
   }
 
+  const date = new Date();
   return (
     <li className={styles.item}>
       <div onDoubleClick={handleEditing} style={viewMode}>
@@ -64,6 +65,29 @@ const TodoItem = (props) => {
         onKeyDown={handleUpdatedDone}
         onBlur={stopEditing}
       />
+      <div className="TodoItemDate">
+        <p>
+          Added :
+          <span>
+            {date.getDay()}
+            /
+            {date.getMonth()}
+            /
+            {date.getUTCFullYear()}
+          </span>
+        </p>
+        <p>
+          At :
+          <span>
+            {date.getHours()}
+            :
+            {date.getMinutes()}
+            :
+            {date.getSeconds()}
+          </span>
+        </p>
+
+      </div>
     </li>
   );
 };
